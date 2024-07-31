@@ -8,8 +8,8 @@ def formatter_csv(input_file):
 
 
 if __name__ == "__main__":
-    input_file = "data/external/INDICADORES ECÓNOMICOS/ENCUESTA DE ESTABLECIMIENTO/Actividades Financieras.csv"
-    formatter_csv(input_file)
+    formatter_csv("data/external/INDICADORES ECÓNOMICOS/ENCUESTA DE ESTABLECIMIENTO/Actividades Financieras.csv")
+    # formatter_csv("data/external/INDICADORES ECÓNOMICOS/ENCUESTA DE ESTABLECIMIENTO/Comercio, Transportación y Utilidades .csv")
     transformed_df = pd.read_csv("data/external/indicadores_economicos.csv")
 
     print(transformed_df)
