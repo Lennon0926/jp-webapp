@@ -71,6 +71,9 @@ from src.formularios.quaterly.ingreso_neto_qtr.form_ip_110_qtr import IP_110_qtr
 from src.formularios.quaterly.ingreso_neto_qtr.form_ip_210_qtr import IP_210_qtr
 from src.formularios.quaterly.ingreso_neto_qtr.form_ip_220_qtr import IP_220_qtr
 from src.formularios.quaterly.ingreso_neto_qtr.form_ip_230_qtr import IP_230_qtr
+from src.formularios.quaterly.ingreso_neto_qtr.form_ip_310_qtr import IP_310_qtr
+from src.formularios.quaterly.ingreso_neto_qtr.form_ip_310b_qtr import IP_310b_qtr
+from src.formularios.quaterly.ingreso_neto_qtr.form_ip_420_qtr import IP_420_qtr
 
 def home(request):
     return render(request, "home.html")
