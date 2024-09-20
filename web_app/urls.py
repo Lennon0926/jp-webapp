@@ -90,5 +90,10 @@ urlpatterns = [
 
 
 
+    re_path(r"^IP-540S-servicios-administrativos-y-de-apoyo-qtr/$", views.IP_540s_qtr, name="IP-540S-qtr"),
+
+
+
+
 ]
 
