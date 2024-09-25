@@ -96,6 +96,7 @@ urlpatterns = [
     re_path(r"^IP-540j-administracion-de-empresas-qtr/$", views.IP_540j_qtr, name="IP-540j-qtr"),
     re_path(r"^IP-540p-organizacion-de-viajes-y-servicios-de-reservacion-qtr/$", views.IP_540p_qtr, name="IP-540p-qtr"),
     re_path(r"^IP-610-servicios-de-educacion-qtr/$", views.IP_610_qtr, name="IP-610-qtr"),
+    re_path(r"^IP-620-servicios-de-salud-qtr/$", views.IP_620_qtr, name="IP-620-qtr"),
 
 
 
