@@ -1,64 +1,57 @@
 import pandas as pd
 from django.shortcuts import render
 from web_app import graphics_function as gf
-from plotly.subplots import make_subplots
-import polars as pl
 import plotly.graph_objects as go
-from django.http import HttpResponse
-from src.dao.data_db_dao import DAO
-import plotly.express as px
 from .models import *
-import csv
-import os
 from src.visualization.indicadores import web_app_indicadores
 from src.visualization.macro import web_app_macro
 from src.visualization.imports_exports import web_app_imports_exports
-from src.formularios.form_ip_110 import IP_110
-from src.formularios.form_jp_304 import JP_304
-from src.formularios.form_jp_361 import JP_361
-from src.formularios.form_jp_362 import JP_362
-from src.formularios.form_jp_364 import JP_364
-from src.formularios.form_jp_529 import JP_529
-from src.formularios.form_jp_541 import JP_541
-from src.formularios.form_jp_363 import JP_363
-from src.formularios.form_jp_560_63110 import JP_560_63110
-from src.formularios.form_ip_210 import IP_210
-from src.formularios.form_ip_220 import IP_220
-from src.formularios.form_jp_560_63111 import JP_560_63111
-from src.formularios.form_ip_230 import IP_230
-from src.formularios.form_jp_560_63210 import JP_560_63210
-from src.formularios.form_jp_560_2 import JP_560_2
-from src.formularios.form_jp_375 import JP_375
-from src.formularios.form_ip_420 import IP_420
-from src.formularios.form_ip_480 import IP_480
-from src.formularios.form_ip_310 import IP_310
-from src.formularios.form_jp_383 import JP_383
-from src.formularios.form_ip_440 import IP_440
-from src.formularios.form_ip_440g import IP_440g
-from src.formularios.form_ip_310b import IP_310b
-from src.formularios.form_ip_480a import IP_480a
-from src.formularios.form_ip_490 import IP_490
-from src.formularios.form_ip_520 import IP_520
-from src.formularios.form_jp_536_2 import JP_536_2
-from src.formularios.form_ip_510 import IP_510
-from src.formularios.form_jp_544 import JP_544
-from src.formularios.form_ip_530 import IP_530
-from src.formularios.form_ip_520s import IP_520s
-from src.formularios.form_ip_520a import IP_520a
-from src.formularios.form_ip_230 import IP_230
-from src.formularios.form_ip_540 import IP_540
-from src.formularios.form_ip_540j import IP_540J
-from src.formularios.form_jp_544_2 import JP_544_2
-from src.formularios.form_ip_610 import IP_610
-from src.formularios.form_ip_710 import IP_710
-from src.formularios.form_ip_620 import IP_620
-from src.formularios.form_ip_540p import IP_540P
-from src.formularios.form_ip_540s import IP_540S
-from src.formularios.form_ip_540v import IP_540v
-from src.formularios.form_ip_540a import IP_540a
-from src.formularios.form_ip_720 import IP_720
-from src.formularios.form_ip_810 import IP_810
-from src.formularios.form_jp_547 import JP_547
+from src.formularios.yearly.form_ip_110 import IP_110
+from src.formularios.yearly.form_jp_304 import JP_304
+from src.formularios.yearly.form_jp_361 import JP_361
+from src.formularios.yearly.form_jp_362 import JP_362
+from src.formularios.yearly.form_jp_364 import JP_364
+from src.formularios.yearly.form_jp_529 import JP_529
+from src.formularios.yearly.form_jp_541 import JP_541
+from src.formularios.yearly.form_jp_363 import JP_363
+from src.formularios.yearly.form_jp_560_63110 import JP_560_63110
+from src.formularios.yearly.form_ip_210 import IP_210
+from src.formularios.yearly.form_ip_220 import IP_220
+from src.formularios.yearly.form_jp_560_63111 import JP_560_63111
+from src.formularios.yearly.form_ip_230 import IP_230
+from src.formularios.yearly.form_jp_560_63210 import JP_560_63210
+from src.formularios.yearly.form_jp_560_2 import JP_560_2
+from src.formularios.yearly.form_jp_375 import JP_375
+from src.formularios.yearly.form_ip_420 import IP_420
+from src.formularios.yearly.form_ip_480 import IP_480
+from src.formularios.yearly.form_ip_310 import IP_310
+from src.formularios.yearly.form_jp_383 import JP_383
+from src.formularios.yearly.form_ip_440 import IP_440
+from src.formularios.yearly.form_ip_440g import IP_440g
+from src.formularios.yearly.form_ip_310b import IP_310b
+from src.formularios.yearly.form_ip_480a import IP_480a
+from src.formularios.yearly.form_ip_490 import IP_490
+from src.formularios.yearly.form_ip_520 import IP_520
+from src.formularios.yearly.form_jp_536_2 import JP_536_2
+from src.formularios.yearly.form_ip_510 import IP_510
+from src.formularios.yearly.form_jp_544 import JP_544
+from src.formularios.yearly.form_ip_530 import IP_530
+from src.formularios.yearly.form_ip_520s import IP_520s
+from src.formularios.yearly.form_ip_520a import IP_520a
+from src.formularios.yearly.form_ip_230 import IP_230
+from src.formularios.yearly.form_ip_540 import IP_540
+from src.formularios.yearly.form_ip_540j import IP_540J
+from src.formularios.yearly.form_jp_544_2 import JP_544_2
+from src.formularios.yearly.form_ip_610 import IP_610
+from src.formularios.yearly.form_ip_710 import IP_710
+from src.formularios.yearly.form_ip_620 import IP_620
+from src.formularios.yearly.form_ip_540p import IP_540P
+from src.formularios.yearly.form_ip_540s import IP_540S
+from src.formularios.yearly.form_ip_540v import IP_540v
+from src.formularios.yearly.form_ip_540a import IP_540a
+from src.formularios.yearly.form_ip_720 import IP_720
+from src.formularios.yearly.form_ip_810 import IP_810
+from src.formularios.yearly.form_jp_547 import JP_547
 from src.formularios.quaterly.form_jp_361_qrt import JP_361_qrt
 from src.formularios.quaterly.form_jp_362_qtr import JP_362_qtr
 from src.formularios.quaterly.form_jp_363_qtr import JP_363_qtr
@@ -85,7 +78,7 @@ def proyecciones_poblacionales(request):
     d_table = demographic_table(request)
 
     context = {"d_table": d_table}
-    
+
     return render(request, "proyecciones.html", context)
 
 def macro(request):
@@ -97,7 +90,7 @@ def imports_and_exports(request):
 def demographic_graph():
     # Read the CSV file
     df = pd.read_csv("data/external/Anual_Historico.csv")
-    
+
     # Extract column names
     columns = df.columns
     
