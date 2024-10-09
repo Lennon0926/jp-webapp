@@ -13,6 +13,7 @@ import plotly.express as px
 from .models import *
 import csv
 import os 
+from src.visualization.salario_y_empleo import salary_and_employee
 from src.visualization.indicadores import web_app_indicadores
 from src.visualization.macro import web_app_macro
 from src.visualization.login import log_in_page
