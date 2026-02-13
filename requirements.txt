@@ -64,7 +64,7 @@ sqlalchemy==2.0.37
     #   sqlmodel
 sqlmodel==0.0.22
     # via jp-webapp (pyproject.toml)
-sqlparse==0.5.3
+sqlparse==0.5.4
     # via django
 tenacity==9.0.0
     # via plotly
